@@ -15,6 +15,9 @@ file based routing built over express
     var app = express();
     
     require('restree')(app);
+
+    app.listen(8080);
+    
     
 # File based routing ?
 
