@@ -17,7 +17,7 @@ file based routing built over express
     require('restree')(app);
 
     app.listen(8080);
-    
+
     
 # File based routing ?
 
@@ -35,7 +35,7 @@ With restree, each file is treated as a route.
       return res.render("schools.jade");
     });
     
-    app.post('/school/:id', function(req, res) {
+    app.post('/schools/:id', function(req, res) {
       return res.send(200);
     });
 
@@ -55,14 +55,14 @@ With restree, each file is treated as a route.
     app.listen(8080);
 
 
-**restree/school/GET.js**
+**restree/schools/GET.js**
 
     exports.handler = function(req, res) {
       return res.render("schools.jade");
     }
     
 
-**restree/school/\_id\_/POST.js**
+**restree/schools/\_id\_/POST.js**
 
     exports.handler = function(req, res) {
       return res.send(200);
@@ -76,12 +76,11 @@ Given a directory:
     | app.js
     | -- restree
     |    | -- GET.js
-    |    | -- school
-    |    |    | -- school
-    |    |    |    | -- _id_
-    |    |    |    |    | -- GET.js
-    |    |    |    |    | -- PATCH.js
-    |    |    |    |    | -- helper.js
+    |    | -- schools
+    |    |    | -- _id_
+    |    |    |    | -- GET.js
+    |    |    |    | -- PATCH.js
+    |    |    |    | -- helper.js
 
 
     
