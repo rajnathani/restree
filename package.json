@@ -1,6 +1,6 @@
 {
   "name": "restree",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "REST based on development file routes",
   "main": "lib/index.js",
   "bin": "./bin/restree",
