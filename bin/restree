@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+
+// parts of source code taken from: https://github.com/db-migrate/node-db-migrate/blob/master/bin/db-migrate
+
+'use strict';
+
+var ArgumentParser = require('argparse').ArgumentParser;
+var resolve = require('resolve');
+
+process.title = 'restree';
+
+var parser = new ArgumentParser({
+    addHelp: true,
+    description: 'Argparse example'
+});
+
+parser.addArgument(
+    [ '-p', '--path' ],
+    {
+      help: 'Relative path from the current working directory',
+      defaultValue: 'restree'
+    }
+);
+
+parser.addArgument(
+  [ '-n', '--name' ],
+  {
+    help: 'Name for file created',
+    defaultValue: 'restreed'
+  }
+);
+
+var relativeFilePath = parser.parseArgs().path;
+var absoluteFilePath = process.cwd() + "/" + relativeFilePath;
+
+resolve('restree', {
+  basedir: process.cwd()
+}, function (error, localModule) {
+  var restree;
+  if (error) {
+    restree = require('../');
+  } else {
+    restree = require(localModule);
+  }
+  restree(absoluteFilePath, relativeFilePath, parser.parseArgs().name);
+  
+} );

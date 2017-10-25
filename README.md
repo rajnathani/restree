@@ -7,14 +7,19 @@ file based routing built over express
 
 (1) download:
 
+    npm install --g restree
+
+or locally:
+
     npm install --save restree
+
     
 (2) enable:
     
     var express = require('express');
-    var app = express();
-    
-    require('restree')(app);
+    var restreed = require('./restreed')(app);
+
+    restreed.bind();
 
     app.listen(8080);
 
@@ -23,6 +28,15 @@ file based routing built over express
 
 With restree, each file is treated as a route.
 
+#### How to run?
+
+If you've installed globally (`npm install -g restree`):
+
+  restree
+
+Else if you've installed locally (`npm install --save restree`)
+
+  ./node_modules/restree/bin/restree
 
 ## Conventional routing:
 
@@ -48,9 +62,10 @@ With restree, each file is treated as a route.
 **app.js**
 
     var express = require('express');
-    var app = express()
-    
-    require('restree')(app);
+    var app = express();
+    var restreed = require('./restreed')(app);
+
+    restreed.bind();
 
     app.listen(8080);
 
@@ -93,6 +108,7 @@ Given a directory:
     
 (3) helpers -> non js / non directory / \_\_\<name>    
     
+
 
 
 

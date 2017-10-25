@@ -10,39 +10,21 @@ describe('cutRootPath', function () {
     });
 });
 
-describe('normalizeTrailingSlash', function () {
-    it('should handle empty string', function () {
-        restree.normalizeTrailingSlash('').should.eql('/')
-    });
-    it('should handle empty root file', function () {
-        restree.normalizeTrailingSlash('/').should.eql('/')
-    });
-    it('should handle root file', function () {
-        restree.normalizeTrailingSlash('/foo').should.eql('/foo')
-    });
-    it('should handle root file with trailing slash', function () {
-        restree.normalizeTrailingSlash('/foo/').should.eql('/foo')
-    });
-    it('should handle file with trailing slashes', function () {
-        restree.normalizeTrailingSlash('/foo/bar//').should.eql('/foo/bar')
-    });
-});
-
 describe('makePathExpressJsPath', function () {
     it('should handle empty string', function () {
-        restree.makePathExpressJsPath('').should.eql('')
+        restree.makePathExpressJsPath('').should.eql('/')
     });
     it('should handle single file', function () {
-        restree.makePathExpressJsPath('_foo_').should.eql(':foo')
+        restree.makePathExpressJsPath('_foo_').should.eql('/:foo')
     });
     it('should handle file', function () {
-        restree.makePathExpressJsPath('/bar/_foo_/').should.eql('/bar/:foo/')
+        restree.makePathExpressJsPath('bar/_foo_/').should.eql('/bar/:foo/')
     });
     it('should handle file with param in the middle', function () {
-        restree.makePathExpressJsPath('/bar/_foo_/baz').should.eql('/bar/:foo/baz')
+        restree.makePathExpressJsPath('bar/_foo_/baz').should.eql('/bar/:foo/baz')
     });
     it('should handle file with multiple params', function () {
-        restree.makePathExpressJsPath('/bar/_foo_/_baz_/').should.eql('/bar/:foo/:baz/')
+        restree.makePathExpressJsPath('bar/_foo_/_baz_/').should.eql('/bar/:foo/:baz/')
     });
 });
 

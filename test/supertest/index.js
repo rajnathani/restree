@@ -1,8 +1,18 @@
 var app = require('express')();
-var restree = require('../../');
+var restreed = require('./restreed')(app);
 var request = require('supertest');
 
-restree(app);
+app.use(function(req, res, next){
+  var metadata = restreed.metadata(req,res);
+  if (metadata && metadata.runSecurityMiddleware) {
+    res.locals.ranSecurityMiddleware = true;
+  } else {
+    res.locals.ranSecurityMiddleware = false;    
+  }
+  next();
+});
+
+restreed.bind();
 
 request(app)
   .get('/')
@@ -45,4 +55,3 @@ request(app)
   .end(function(err, res){
     if (err || res.text !== 'Unsuspended member 2uhjg949 from group 5cabc387') throw Error();
   });
-  
