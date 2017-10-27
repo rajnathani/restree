@@ -23,12 +23,12 @@
   },
   "homepage": "https://github.com/rajnathani/restree#readme",
   "dependencies": {
+    "argparse": "^1.0.9",
     "colors": "^1.1.2",
     "lodash.trim": "^4.5.1",
     "resolve": "^1.4.0"
   },
   "devDependencies": {
-    "argparse": "^1.0.9",
     "express": "^4.16.2",
     "mocha": "^4.0.1",
     "should": "^13.1.2",
