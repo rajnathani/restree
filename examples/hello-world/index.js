@@ -1,6 +1,6 @@
-var app = require('express')();
-var restree = require('../../');
-var restreed = require('./restreed')(app);
+const app = require('express')();
+const restree = require('../../');
+const restreed = require('./restreed')(app);
 
 restreed.bind();
 

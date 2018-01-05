@@ -16,8 +16,8 @@ or locally:
     
 (2) enable:
     
-    var express = require('express');
-    var restreed = require('./restreed')(app);
+    const express = require('express');
+    const restreed = require('./restreed')(app);
 
     restreed.bind();
 
@@ -42,14 +42,14 @@ Else if you've installed locally (`npm install --save restree`)
 
 **app.js**
     
-    var express = require('express');
-    var app = express();
+    const express = require('express');
+    const app = express();
     
-    app.get('/schools/', function(req, res) {
+    app.get('/schools/', async function(req, res) {
       return res.render("schools.jade");
     });
     
-    app.post('/schools/:id', function(req, res) {
+    app.post('/schools/:id', async function(req, res) {
       return res.send(200);
     });
 
@@ -61,9 +61,9 @@ Else if you've installed locally (`npm install --save restree`)
   
 **app.js**
 
-    var express = require('express');
-    var app = express();
-    var restreed = require('./restreed')(app);
+    const express = require('express');
+    const app = express();
+    const restreed = require('./restreed')(app);
 
     restreed.bind();
 
@@ -72,14 +72,14 @@ Else if you've installed locally (`npm install --save restree`)
 
 **restree/schools/GET.js**
 
-    exports.handler = function(req, res) {
+    exports.handler = async function(req, res) {
       return res.render("schools.jade");
     }
     
 
 **restree/schools/\_id\_/POST.js**
 
-    exports.handler = function(req, res) {
+    exports.handler = async function(req, res) {
       return res.send(200);
     }
 

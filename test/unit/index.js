@@ -1,5 +1,5 @@
-var should = require('should');
-var restree = require('../../');
+const should = require('should');
+const restree = require('../../');
 
 describe('cutRootPath', function () {
     it('should handle single level hierarchy', function () {

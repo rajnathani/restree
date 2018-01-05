@@ -1,9 +1,11 @@
-var app = require('express')();
-var restreed = require('./restreed')(app);
-var request = require('supertest');
+'use strict';
+
+const app = require('express')();
+const restreed = require('./restreed')(app);
+const request = require('supertest');
 
 app.use(function (req, res, next) {
-  var metadata = restreed.metadata(req, res);
+  const metadata = restreed.metadata(req, res);
   if (metadata && metadata.runSecurityMiddleware) {
     res.locals.ranSecurityMiddleware = true;
   } else {
@@ -13,6 +15,9 @@ app.use(function (req, res, next) {
 });
 
 restreed.bind();
+app.use(function (err, req, res, next) {
+  console.error('request exited with an error');
+});
 
 request(app)
   .get('/')

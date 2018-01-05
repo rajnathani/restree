@@ -4,12 +4,12 @@
 
 'use strict';
 
-var ArgumentParser = require('argparse').ArgumentParser;
-var resolve = require('resolve');
+const ArgumentParser = require('argparse').ArgumentParser;
+const resolve = require('resolve');
 
 process.title = 'restree';
 
-var parser = new ArgumentParser({
+const parser = new ArgumentParser({
     addHelp: true,
     description: 'Argparse example'
 });
@@ -30,13 +30,13 @@ parser.addArgument(
   }
 );
 
-var relativeFilePath = parser.parseArgs().path;
-var absoluteFilePath = process.cwd() + "/" + relativeFilePath;
+const relativeFilePath = parser.parseArgs().path;
+const absoluteFilePath = process.cwd() + '/' + relativeFilePath;
 
 resolve('restree', {
   basedir: process.cwd()
 }, function (error, localModule) {
-  var restree;
+  let restree;
   if (error) {
     restree = require('../');
   } else {

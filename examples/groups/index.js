@@ -1,9 +1,9 @@
-var app = require('express')();
-var restreed = require('./restreed')(app);
-var request = require('supertest');
+const app = require('express')();
+const restreed = require('./restreed')(app);
+const request = require('supertest');
 
 app.use(function(req, res, next){
-  var metadata = restreed.metadata(req,res);
+  const metadata = restreed.metadata(req,res);
   if (metadata && metadata.runSecurityMiddleware) {
     res.locals.ranSecurityMiddleware = true;
   } else {
